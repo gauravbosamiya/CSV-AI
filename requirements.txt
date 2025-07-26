@@ -1,0 +1,21 @@
+langchain
+langchain-community
+langchain-groq
+
+pinecone-client
+
+streamlit
+dotenv
+
+langchain-google-genai
+google-generativeai
+
+fastapi
+uvicorn[standard]
+python-multipart
+
+langchain-pinecone
+
+langchain-huggingface
+sentence-transformers
+-e .
