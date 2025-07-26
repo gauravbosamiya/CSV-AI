@@ -18,4 +18,5 @@ langchain-pinecone
 
 langchain-huggingface
 sentence-transformers
+langchain-experimental
 -e .

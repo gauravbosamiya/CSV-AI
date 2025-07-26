@@ -68,4 +68,4 @@ async def delete_doc_from_pinecone(file_id:int):
 
 # asyncio.run(load_split_store_document(file_path="carprices.csv", file_id="carprices.csv"))
 
-load_split_store_document(file_path="carprices.csv", file_id="carprices.csv")
+# load_split_store_document(file_path="carprices.csv", file_id="carprices.csv")

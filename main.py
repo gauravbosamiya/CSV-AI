@@ -2,6 +2,7 @@ import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from src.summarize import summarize
 from src.home_page import home_page
+from src.analyze import analyze
 
 def main():
     st.set_page_config(page_title="CSV AI", page_icon="🧾", layout="wide")
@@ -58,22 +59,21 @@ def main():
 
     else:
         try:
-            model = ChatGoogleGenerativeAI(model=model_name, google_api_key=api_key)
-
             if selected_function == "Chat with CSV":
+                model = ChatGoogleGenerativeAI(model=model_name, google_api_key=api_key)
                 result = model.invoke("Hello!")
                 st.write("Response:", result.content)
 
             elif selected_function == "Summarize CSV":
-                summarize(model_name, api_key)
+                summarize(model_name, api_key)  
 
             elif selected_function == "Analyze CSV":
-                result = model.invoke("Analyze this data.")
-                st.write("Response:", result.content)
+                analyze(model_name, api_key)
 
         except Exception as e:
             st.error("❌ Invalid API key. Please enter a valid **Google Generative AI** key.")
             st.stop()
+
 
 if __name__ == "__main__":
     main()
