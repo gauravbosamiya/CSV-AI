@@ -10,9 +10,10 @@ from langchain.memory import ConversationBufferMemory
 load_dotenv()
 
 def analyze(model_name,api_key):
-    st.write("# Analyze CSV & Excel")
-    reset = st.sidebar.button("Reset Chat")
+    st.write("### Analyze CSV & Excel🧾")
+    
     uploaded_file = st.sidebar.file_uploader("📁 Upload CSV or Excel file:", type=["csv", "xls", "xlsx"])
+    reset = st.sidebar.button("Reset Chat")
     if not uploaded_file:
         st.warning("Please upload a file to continue.")
         return
@@ -35,7 +36,8 @@ def analyze(model_name,api_key):
         llm=llm,
         df=df,
         memory=st.session_state.memory,
-        verbose=True,
+        # verbose=True,
+        allow_dangerous_code=True
     )
     if "messages" not in st.session_state:
         st.session_state.messages = [{"role": "assistant", "content": "Hi! Ask me anything about your data."}]

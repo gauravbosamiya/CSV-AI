@@ -72,6 +72,7 @@ def main():
 
         except Exception as e:
             st.error("❌ Invalid API key. Please enter a valid **Google Generative AI** key.")
+            st.exception(e)
             st.stop()
 
 
