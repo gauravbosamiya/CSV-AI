@@ -83,3 +83,6 @@ async def summarize(file:UploadFile=File(...), model_name:str=Form(...),api_key:
         raise HTTPException(status_code=400, detail=f"{str(e)}")
     
 
+@app.post("/chat")
+def chat():
+    pass

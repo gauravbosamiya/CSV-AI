@@ -16,7 +16,10 @@ python-multipart
 
 langchain-pinecone
 
+
 langchain-huggingface
 sentence-transformers
 langchain-experimental
+
+tabulate
 -e .
