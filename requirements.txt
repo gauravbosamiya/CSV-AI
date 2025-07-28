@@ -22,4 +22,5 @@ sentence-transformers
 langchain-experimental
 
 tabulate
+pymongo
 -e .
