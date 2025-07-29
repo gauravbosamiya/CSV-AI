@@ -28,7 +28,6 @@ text_splitter = CharacterTextSplitter(
 )
 
 async def load_split_store_document(file_obj, file_id: str) -> Tuple[PineconeVectorStore, object]:
-    """Load, split, embed, and store the document in Pinecone."""
     filename = getattr(file_obj, "filename", None)
     if not filename:
         raise ValueError("❌ Uploaded file has no valid filename.")
@@ -77,10 +76,12 @@ async def load_split_store_document(file_obj, file_id: str) -> Tuple[PineconeVec
 
 
 async def delete_doc_from_pinecone(file_id: str) -> bool:
-    """Delete all document chunks from Pinecone by file_id."""
     def _delete():
         try:
-            vectorstore = PineconeVectorStore(index_name=INDEX_NAME, embedding=embedding)
+            vectorstore = PineconeVectorStore(
+                index_name=INDEX_NAME, 
+                embedding=embedding
+            )
             vectorstore.delete(filter={"file_id": file_id})
             return True
         except Exception:
@@ -91,7 +92,10 @@ async def delete_doc_from_pinecone(file_id: str) -> bool:
 
 async def load_retriever_by_file_id(file_id: str):
     def _load():
-        vectorstore = PineconeVectorStore(index_name=INDEX_NAME, embedding=embedding)
+        vectorstore = PineconeVectorStore(
+            index_name=INDEX_NAME, 
+            embedding=embedding
+        )
         retriever = vectorstore.as_retriever(
             search_type="similarity",
             search_kwargs={"filter": {"file_id": file_id}, "k": 5}
